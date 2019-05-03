@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+#faces{
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    top: 10px;
+    left: 20px;
+    width: 300px;
+    height: 400px;
+    z-index: 20;
+}
+#U, #BT, #B{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
