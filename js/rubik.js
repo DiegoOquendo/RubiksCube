@@ -285,7 +285,7 @@ function calRotationMatrix(ang, axis) {
         return m;
     }
 }
-function rotate(M, ang, axis) {
+ function rotate(M, ang, axis) {
     disableKeys();
     let vel = [1, 3, 9];
     let cont = 0;
@@ -306,7 +306,7 @@ function rotate(M, ang, axis) {
         }
         window.requestAnimationFrame(animate2);
     }
-    setTimeout(animate2(0), 2000);
+    animate2(0);
     return M;
 }
 function rotateF(ang, F) {
@@ -795,9 +795,8 @@ $(document).keydown(function (e) {
                     moves.push("R");
                     break;
                 case 83:
-                    // console.log("Solving");
-                    // MOV = true;
-                    // solveCube();
+                    MOV = true;
+                    solveCube();
                     break;
             }
         }
@@ -814,10 +813,14 @@ function enableKeys() {
     MOV = false;
 }
 //
-//SOLVE - in testing
-function solveCube() {
+//SOLVE
+async function solveCube() {
     while (moves.length > 0) {
         if (MOV) {
+            let promise = new Promise((resolve, reject) => {
+                setTimeout(() => resolve("done!"), 1000)
+            });
+            let result = await promise;
             switch (moves.pop()) {
                 case "F":
                     F = rotateF(-90, F);
